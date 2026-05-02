@@ -1,6 +1,6 @@
 # Krishna Saahi Yavana Portfolio
 
-Next.js portfolio website with a resume-informed local chatbot and prepopulated questions.
+Astro portfolio website with an animated Three.js hero scene, resume-informed local chatbot, and prepopulated questions.
 
 Live site: https://krishna-saahi-portfolio.vercel.app
 
@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open the local URL shown by Astro, usually `http://localhost:4321`.
 
 ## Build
 
@@ -23,9 +23,9 @@ npm run build
 
 1. Push this folder to GitHub.
 2. Import the repository in Vercel.
-3. Use the default Next.js settings:
+3. Use the Astro settings:
    - Build command: `npm run build`
-   - Output: Next.js default
+   - Output: `dist`
 4. Deploy.
 
-No API key is required for the chatbot. It answers from the structured resume details in `app/page.tsx`.
+No API key is required for the chatbot. It answers from the structured resume details in `src/data/profile.ts`.

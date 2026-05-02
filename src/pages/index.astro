@@ -1,0 +1,186 @@
+---
+import { profile, suggestedQuestions } from "../data/profile";
+import "../styles/global.css";
+
+const skillGroups = [
+  { label: "Automation", items: ["Selenium", "Playwright", "Cypress", "Appium", "Rest Assured"] },
+  { label: "Languages", items: ["Java", "JavaScript", "Python", "Groovy"] },
+  { label: "Cloud & DevOps", items: ["AWS", "Docker", "Kubernetes", "Jenkins", "Azure DevOps"] },
+  { label: "Quality Practice", items: ["BDD", "TDD", "Postman", "BrowserStack", "Perfecto"] }
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio for Krishna Saahi Yavana, an SDET specializing in UI, API, database, mobile, cloud, and AI/ML testing automation."
+    />
+    <title>{profile.name} | Astro + Three.js Portfolio</title>
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="home">
+        <canvas class="heroScene" data-automation-scene aria-label="Animated automation network"></canvas>
+        <div class="heroNoise"></div>
+        <nav class="nav" aria-label="Primary navigation">
+          <a class="brand" href="#home" aria-label={`${profile.name} home`}>KS</a>
+          <div class="navLinks">
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#chat">Ask Krishna</a>
+          </div>
+        </nav>
+
+        <div class="heroContent">
+          <div class="heroCopy reveal">
+            <p class="eyebrow">Quality Engineering / SDET / AI Validation</p>
+            <h1>{profile.name}</h1>
+            <p class="heroLead">{profile.summary}</p>
+            <div class="heroActions">
+              <a class="primaryAction" href="#chat">Ask the chatbot</a>
+              <a class="secondaryAction" href={`mailto:${profile.email}`}>Contact Krishna</a>
+            </div>
+          </div>
+          <aside class="orbitPanel reveal" aria-label="Testing capability summary">
+            <span>Live Stack</span>
+            <strong>Astro + Three.js</strong>
+            <p>Interactive canvas, static deployment, resume-trained local chatbot.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Career highlights">
+        <div><strong>7+</strong><span>Years in quality engineering</span></div>
+        <div><strong>1200+</strong><span>Automated scripts at Gainsight</span></div>
+        <div><strong>300+</strong><span>Cucumber scripts at Wells Fargo</span></div>
+        <div><strong>3 min</strong><span>Coverage reporting turnaround</span></div>
+      </section>
+
+      <section class="section split" id="chat">
+        <div class="sectionIntro reveal">
+          <p class="eyebrow dark">Interactive Profile Assistant</p>
+          <h2>Ask about Krishna</h2>
+          <p>
+            This assistant runs in the browser and answers from structured resume data: automation impact,
+            tools, AI/ML testing, education, and contact details.
+          </p>
+          <div class="contactList">
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <a href={`tel:${profile.phone.replace(/[^\d+]/g, "")}`}>{profile.phone}</a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+            <span>{profile.location}</span>
+          </div>
+        </div>
+
+        <div class="chatPanel reveal" aria-label="Portfolio chatbot">
+          <div class="chatHeader">
+            <strong>Krishna Bot</strong>
+            <span>Resume-trained local assistant</span>
+          </div>
+          <div class="suggestions" aria-label="Suggested questions">
+            {suggestedQuestions.map((question) => (
+              <button type="button" data-question={question}>{question}</button>
+            ))}
+          </div>
+          <div class="messages" data-chat-messages aria-live="polite">
+            <div class="message bot">
+              Hi, I am Krishna's portfolio assistant. Ask me about his automation work, AI/ML testing,
+              tools, education, or how to contact him.
+            </div>
+          </div>
+          <form class="chatForm" data-chat-form>
+            <input data-chat-input placeholder="Ask about tools, projects, education..." aria-label="Ask Krishna's chatbot a question" />
+            <button type="submit" aria-label="Send question">Send</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <div class="sectionHeading reveal">
+          <p class="eyebrow dark">Professional Experience</p>
+          <h2>Automation impact across enterprise teams</h2>
+        </div>
+        <div class="timeline">
+          {profile.experience.map((job) => (
+            <article class="job reveal">
+              <div class="jobMeta">
+                <span>{job.dates}</span>
+                <span>{job.place}</span>
+              </div>
+              <div>
+                <h3>{job.role}</h3>
+                <p class="company">{job.company}</p>
+                <ul>
+                  {job.points.map((point) => <li>{point}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section skillsSection" id="skills">
+        <div class="sectionHeading reveal">
+          <p class="eyebrow dark">Core Strengths</p>
+          <h2>Frameworks, pipelines, and test strategy</h2>
+        </div>
+        <div class="skillGrid">
+          {skillGroups.map((group) => (
+            <article class="skillGroup reveal">
+              <h3>{group.label}</h3>
+              <div>{group.items.map((skill) => <span>{skill}</span>)}</div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="impactBand">
+        <div class="reveal">
+          <p class="eyebrow dark">Selected Wins</p>
+          <h2>Built for repeatable quality at scale</h2>
+        </div>
+        <div class="impactList">
+          {profile.highlights.map((highlight) => <p class="reveal">{highlight}</p>)}
+        </div>
+      </section>
+
+      <section class="section education">
+        <div class="reveal">
+          <p class="eyebrow dark">Education</p>
+          <h2>Purdue University, Fort Wayne</h2>
+          <p>{profile.education}</p>
+        </div>
+        <div class="reveal">
+          <p class="eyebrow dark">Backend Confidence</p>
+          <h2>API, database, and CI coverage</h2>
+          <p>
+            Krishna pairs API automation with database validation, defect triage, CI/CD integration,
+            and reusable test utilities.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <span>{profile.name}</span>
+        <a href={profile.website}>{profile.website.replace("https://", "")}</a>
+      </footer>
+    </main>
+    <script>
+      import "../scripts/automation-scene.js";
+      import "../scripts/chatbot.js";
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    </script>
+  </body>
+</html>
