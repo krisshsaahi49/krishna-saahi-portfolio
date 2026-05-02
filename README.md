@@ -2,6 +2,8 @@
 
 Next.js portfolio website with a resume-informed local chatbot and prepopulated questions.
 
+Live site: https://krishna-saahi-portfolio.vercel.app
+
 ## Run Locally
 
 ```bash
